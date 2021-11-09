@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b625292ac1a121a438753437638edf52, type: 3}
   m_Name: DifficultyConfig
   m_EditorClassIdentifier: 
-  _velocityIncreasePerSecond: 0.2
-  _spawnRateDecreasePerSecond: 0.02
+  _velocityPerMinute: 6
+  _spheresPerMinute: 30
   _maxVelocity: 12
-  _minSpawnCooldown: 1

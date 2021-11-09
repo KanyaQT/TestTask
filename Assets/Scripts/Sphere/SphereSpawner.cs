@@ -12,8 +12,10 @@ namespace TestTask.SphereNS
         private SphereFactory _factory;
         [SerializeField]
         private EffectFactory _effectFactory;
-        [SerializeField, Range(0.45f, 3f)]
-        private float _spawnCooldown;
+        [SerializeField, Range(1f, 3f)]
+        private int _initialSpawnCooldown;
+        [SerializeField, Range(1f, 30f)]
+        private int _spawnCooldown;
 
         private SphereStorage _storage;
 
@@ -39,16 +41,21 @@ namespace TestTask.SphereNS
         private void Start()
         {
             _storage = new SphereStorage();
-            _currentCooldown = _spawnCooldown;
+            _currentCooldown = _initialSpawnCooldown;
         }
 
         private void Update()
         {
             if(_currentCooldown <= 0)
             {
-                Spawn();
-                float cooldown = _spawnCooldown - Difficulty.SpawnRateDecrease;
-                _currentCooldown = cooldown > Difficulty.MinSpawnTime ? cooldown : Difficulty.MinSpawnTime;
+                int count = Difficulty.SpheresPerMinute / _spawnCooldown;
+
+                for(int i = 0; i < count; i++)
+                {
+                    Spawn();
+                }
+
+                _currentCooldown = _spawnCooldown;
             }
 
             _currentCooldown -= Time.deltaTime;
@@ -91,7 +98,7 @@ namespace TestTask.SphereNS
 
         public void ResetSpawner()
         {
-            _currentCooldown = _spawnCooldown;
+            _currentCooldown = _initialSpawnCooldown;
             _storage.Clear(_factory);
         }
     }

@@ -2309,7 +2309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _factory: {fileID: 11400000, guid: 5197e7ccbb1fb724b9189b16149fd034, type: 2}
   _effectFactory: {fileID: 11400000, guid: f25436cb17d51c44db4c14969da58848, type: 2}
-  _spawnCooldown: 3
+  _initialSpawnCooldown: 1
+  _spawnCooldown: 6
 --- !u!1 &2049375156
 GameObject:
   m_ObjectHideFlags: 0

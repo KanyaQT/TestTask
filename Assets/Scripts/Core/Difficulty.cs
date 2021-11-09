@@ -12,16 +12,14 @@ namespace TestTask.Core
         private float _difficultyTickInSeconds;
 
         public static float VelocityBonus { get; private set; }
-        public static float SpawnRateDecrease { get; private set; }
+        public static int SpheresPerMinute { get; private set; }
 
         public static float MaxVelocity { get; private set; }
 
-        public static float MinSpawnTime { get; private set; }
-
         private void Start()
         {
+            SpheresPerMinute = _config.SpheresPerMinute;
             MaxVelocity = _config.MaxVelocity;
-            MinSpawnTime = _config.MinSpawnCooldown;
 
             StartCoroutine(IncreaseDifficulty());
         }
@@ -38,14 +36,13 @@ namespace TestTask.Core
         private void DifficultyTick()
         {
             VelocityBonus += _config.VelocityBonusPerSecond * _difficultyTickInSeconds;
-            SpawnRateDecrease += _config.SpawnRateDecreasePerSecond * _difficultyTickInSeconds;
+            print(VelocityBonus);
         }
 
         public void ResetDifficulty()
         {
-            StopCoroutine(IncreaseDifficulty());
+            StopAllCoroutines();
             VelocityBonus = 0;
-            SpawnRateDecrease = 0;
             StartCoroutine(IncreaseDifficulty());
         }
     }
