@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TestTask.PlayerNS
 {
@@ -15,10 +13,6 @@ namespace TestTask.PlayerNS
             if(value > _value)
             {
                 _value = value;
-            }
-            else
-            {
-                throw new ArgumentException("Highscore setted isn't higher than the previous highscore!");
             }
         }
     }
