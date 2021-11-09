@@ -36,7 +36,6 @@ namespace TestTask.Core
         private void DifficultyTick()
         {
             VelocityBonus += _config.VelocityBonusPerSecond * _difficultyTickInSeconds;
-            print(VelocityBonus);
         }
 
         public void ResetDifficulty()
